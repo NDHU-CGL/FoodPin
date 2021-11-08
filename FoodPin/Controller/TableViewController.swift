@@ -156,4 +156,15 @@ class TableViewController: UITableViewController {
         
         return swipeConfiguration
     }
+    
+    //MARK: - For Segue's function
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destinationController = segue.destination as! DetailViewController
+                destinationController.restaurantImageName = restaurants[indexPath.row].image
+            }
+        }
+    }
+    
 }
